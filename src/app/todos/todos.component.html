@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Todos</a>
+</nav>
+<div class="card" style="margin: 30px; padding: 30px">
+  <div class="row">
+    <div class="col-md-6">
+      <form (ngSubmit)="onSubmit(todoForm)" #todoForm="ngForm">
+        <div class="form-group">
+          <label for="nom">Nom</label>
+          <input type="text" class="form-control" id="nom"
+                 required
+                 [(ngModel)]="todoNom" name="nom"
+                 #nom="ngModel">
+          <div [hidden]="nom.valid || nom.pristine"
+               class="alert alert-danger">
+            Le nom est requis !
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="contenu">Contenu</label>
+          <input type="text" class="form-control" id="contenu"
+                 required
+                 [(ngModel)]="todoContenu" name="contenu"
+                 #contenu="ngModel">
+          <div [hidden]="contenu.valid || contenu.pristine"
+               class="alert alert-danger">
+            Le contenu est requis !
+          </div>
+        </div>
+        <button type="submit" class="btn btn-success" [disabled]="!todoForm.form.valid">Ajouter</button>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <div *ngFor="let todo of todos; let i = index">
+        <h3>Todo n°{{i + 1}}</h3>
+        <b>Nom: </b>{{todo.nom}} <br>
+        <b>Contenu: </b>{{todo.contenu}}
+        <button class="btn btn-danger" (click)="deleteTodo(i)" style="float: right; font-size: small">Supprimer Todo</button>
+        <hr>
+      </div>
+    </div>
+  </div>
+</div>
