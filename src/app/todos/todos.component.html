@@ -4,6 +4,7 @@
 <div class="card" style="margin: 30px; padding: 30px">
   <div class="row">
     <div class="col-md-6">
+      <h2 style="color: indianred">Ajouter Un nouveau Todo:</h2> <br>
       <form (ngSubmit)="onSubmit(todoForm)" #todoForm="ngForm">
         <div class="form-group">
           <label for="nom">Nom</label>
@@ -31,6 +32,7 @@
       </form>
     </div>
     <div class="col-md-6">
+      <h2 style="color: cadetblue">Liste des Todos:</h2> <br>
       <div *ngFor="let todo of todos; let i = index">
         <h3>Todo n°{{i + 1}}</h3>
         <b>Nom: </b>{{todo.nom}} <br>
